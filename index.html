@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Tourism Satisfaction Analysis | Nico Alfianto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.7; }
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+        
+        header { text-align: center; padding: 40px 0; border-bottom: 1px solid #30363d; }
+        header h1 { color: #58a6ff; font-size: 26px; margin-bottom: 10px; }
+        header .authors { color: #8b949e; font-size: 14px; }
+        header .email { color: #58a6ff; font-size: 14px; margin-top: 10px; }
+
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 25px; margin: 25px 0; }
+        .card h2 { color: #58a6ff; margin-bottom: 15px; font-size: 20px; border-left: 3px solid #58a6ff; padding-left: 10px; }
+        .keywords { color: #8b949e; font-style: italic; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .dataset-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .dataset-table th, .dataset-table td { border: 1px solid #30363d; padding: 8px; text-align: left; }
+        .dataset-table th { background: #21262d; color: #58a6ff; }
+        
+        .result-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .metric { background: #21262d; padding: 15px; border-radius: 8px; text-align: center; }
+        .metric .val { font-size: 22px; font-weight: bold; color: #3fb950; }
+        .metric .label { font-size: 12px; color: #8b949e; }
+
+        /* STYLE BUAT GAMBAR */
+        .img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .img-card { background: #21262d; padding: 15px; border-radius: 8px; text-align: center; }
+        .img-card img { width: 100%; border-radius: 6px; border: 1px solid #30363d; }
+        .img-card p { font-size: 13px; color: #8b949e; margin-top: 8px; }
+
+        .btn { display: inline-block; background: #238636; color: white; padding: 12px 20px; border-radius: 6px; text-decoration: none; margin-top: 10px; }
+        .btn:hover { background: #2ea043; }
+        .btn i { margin-right: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ANALYSIS OF THE EFFECT OF VISITOR COUNT, RESOURCE UTILIZATION RATE, AND ENVIRONMENTAL FACTORS ON TOURIST SATISFACTION USING MULTIPLE LINEAR REGRESSION</h1>
+            <p class="authors">Nico Alfianto (19240013), Muhammad Ikhsan Basuki (19240452), Marcho Dominggus Deviano Timisela (19240228), Awaludin Al Ayubi (19240187), Nethar Balawan Mualikul Mulki (19240450)</p>
+            <p class="uni">Information Systems | Universitas Bina Sarana Informatika</p>
+            <p class="email"><i class="fa-solid fa-envelope"></i> alfiantonico9@gmail.com</p>
+        </header>
+
+        <div class="card">
+            <h2>Abstract</h2>
+            <p>The development of Internet of Things (IoT) technology has brought significant changes in data management in the tourism sector. This study aims to analyze the effect of visitor count, resource utilization rate, and environmental factors on tourist satisfaction using multiple linear regression. The final model produced an R-squared value of 0.623.</p>
+            <p class="keywords"><b>Keywords:</b> IoT, Tourism, Linear Regression, Tourist Satisfaction, Data Analytics</p>
+        </div>
+
+        <div class="card">
+            <h2>Key Results</h2>
+            <div class="result-box">
+                <div class="metric"><div class="val">0.623</div><div class="label">R-Squared</div></div>
+                <div class="metric"><div class="val">0.054</div><div class="label">Shapiro-Wilk p-value</div></div>
+                <div class="metric"><div class="val">0.266</div><div class="label">Breusch-Pagan p-value</div></div>
+                <div class="metric"><div class="val">2.097</div><div class="label">Durbin-Watson</div></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Data Visualization & Analysis Results</h2>
+            <p>Here are the visualizations from RStudio analysis:</p>
+            
+            <div class="img-grid">
+                <!-- GANTI NAMA FILE GAMBAR SESUAI PUNYAMU -->
+                <div class="img-card">
+                    <img src="scatter_resource_satisfaction.png" alt="Scatter Plot Resource vs Satisfaction">
+                    <p><b>Figure 1:</b> Scatter Plot showing negative correlation between Resource Usage Rate and Visitor Satisfaction</p>
+                </div>
+
+                <div class="img-card">
+                    <img src="boxplot_visitor_count.png" alt="Boxplot Visitor Count">
+                    <p><b>Figure 2:</b> Boxplot of Visitor Count showing outliers that affected the initial model</p>
+                </div>
+
+                <div class="img-card">
+                    <img src="qqplot_residual.png" alt="QQ Plot Residual">
+                    <p><b>Figure 3:</b> QQ-Plot of Residuals. Points close to the line indicate normal distribution (p = 0.05405)</p>
+                </div>
+
+                <div class="img-card">
+                    <img src="histogram_residual.png" alt="Histogram Residual">
+                    <p><b>Figure 4:</b> Histogram of Residuals showing symmetric distribution</p>
+                </div>
+            </div>
+            <p style="margin-top:15px; font-size:14px;"><i>Note: Upload your .png/.jpg files to the same github repo folder and match the file names above.</i></p>
+        </div>
+
+        <div class="card">
+            <h2>Dataset Structure</h2>
+            <table class="dataset-table">
+                <thead><tr><th>Variable</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>visitor_satisfaction</td><td>Float Y</td><td>Tourist satisfaction score (0-10)</td></tr>
+                    <tr><td>visitor_count</td><td>Int X1</td><td>Number of visitors per hour</td></tr>
+                    <tr><td>resource_usage_rate</td><td>Float X2</td><td>Facility utilization rate (0-1)</td></tr>
+                    <tr><td>temperature</td><td>Float X3</td><td>Environmental temperature (°C)</td></tr>
+                    <tr><td>air_quality_index</td><td>Int X4</td><td>Air Quality Index</td></tr>
+                    <tr><td>noise_level</td><td>Float X5</td><td>Noise level (dB)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Dataset Download</h2>
+            <a href="https://www.kaggle.com/datasets/ziya07/tourism-resource-management-dataset?resource=download" target="_blank" class="btn">
+                <i class="fa-solid fa-download"></i> Download Dataset from Kaggle
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>
