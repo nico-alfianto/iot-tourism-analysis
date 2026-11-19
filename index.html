@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IoT Tourism Satisfaction Analysis | Nico Alfianto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0A0B;--card:#131315;--card2:#1A1A1D;--border:#232326;--text:#F4F4F5;--muted:#A1A1AA;--muted2:#71717A;--pill:#1E1E21}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{padding:48px 0 32px;border-bottom:1px solid var(--border)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);font-weight:600;margin-bottom:16px}
+.eyebrow span{color:var(--text)}
+h1{font-size:36px;line-height:1.05;letter-spacing:-.03em;font-weight:800;max-width:720px}
+h1 em{font-style:normal;color:var(--muted)}
+.header-desc{max-width:600px;color:var(--muted);font-size:15px;margin-top:18px;line-height:1.7}
+.header-right{text-align:right}
+.header-right strong{display:block;font-size:15px}
+.header-right p{color:var(--muted);font-size:14px;margin-top:4px}
+.header-right .actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:16px}
+.btn-white{display:inline-block;background:#fff;color:#000;font-size:14px;font-weight:600;padding:11px 18px;border-radius:999px}
+.btn-outline{display:inline-block;background:transparent;color:#fff;border:1px solid #3F3F46;font-size:14px;font-weight:600;padding:11px 18px;border-radius:999px}
+main{padding:32px 0 80px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;margin-bottom:20px}
+.card h3{font-size:18px;margin-bottom:6px}
+.card p.sub{font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.7}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi{background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:20px}
+.kpi span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);font-weight:600}
+.kpi b{display:block;font-size:32px;letter-spacing:-.03em;margin:8px 0 4px}
+.kpi small{font-size:13px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.image-wrapper{width:100%;height:300px;background:#0A0A0B;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:12px;cursor:zoom-in}
+.image-wrapper img{width:100%;height:100%;object-fit:contain}
+.insight{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:16px;font-size:14px;line-height:1.7;color:var(--muted)}
+.insight b{color:#fff}
+.table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+.table th{text-align:left;padding:12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.table td{padding:12px;border-bottom:1px solid var(--border)}
+.pg-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px}
+.pg-step{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:16px}
+.pg-step span{font-size:12px;color:var(--muted2);font-weight:600;letter-spacing:.08em}
+.pg-step b{display:block;font-size:14px;margin:6px 0 4px}
+.pg-step p{font-size:13px;color:var(--muted);line-height:1.6}
+.pg-preset{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.pg-preset button{font-family:inherit;background:transparent;border:1px solid #3F3F46;color:var(--text);padding:9px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer}
+.pg-preset button.active{background:#fff;color:#000;border-color:#fff}
+.pg-grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px;align-items:start}
+.pg-label{font-size:14px;font-weight:600;display:flex;justify-content:space-between;align-items:center;margin:16px 0 10px}
+.pg-label b{background:var(--pill);border:1px solid var(--border);padding:5px 10px;border-radius:999px;font-size:12px}
+.pg-input{width:100%;height:6px;background:#27272A;border-radius:999px;-webkit-appearance:none;appearance:none;outline:none}
+.pg-input::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:#fff;border-radius:50%;border:4px solid #000;cursor:pointer}
+.pg-big{font-size:64px;font-weight:800;letter-spacing:-.05em;line-height:1}
+.pg-badge{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:999px;white-space:nowrap}
+.pg-badge.green{background:#052E16;color:#86EFAC;border:1px solid #166534}
+.pg-badge.yellow{background:#422006;color:#FDE68A;border:1px solid #92400E}
+.pg-badge.red{background:#450A0A;color:#FCA5A5;border:1px solid #7F1D1D}
+.pg-bar{height:14px;background:#27272A;border-radius:999px;overflow:hidden;margin:18px 0 8px}
+#pgFill{height:100%;width:78%;background:#22C55E;transition:width .2s}
+.pg-contrib,.pg-action{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-top:12px}
+.pg-meta{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;font-size:12px;color:var(--muted2);line-height:1.7}
+.pg-meta b{color:var(--text)}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);justify-content:center;align-items:center;z-index:9999}
+.modal.active{display:flex}
+.modal img{max-width:92%;max-height:88%;border-radius:12px}
+.modal-close{position:absolute;top:20px;right:30px;font-size:40px;color:#fff;cursor:pointer}
+footer{border-top:1px solid var(--border);padding:28px 0 40px;color:var(--muted2);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:900px){h1{font-size:28px}.kpi-grid{grid-template-columns:1fr 1fr}.grid2,.pg-grid2,.pg-steps{grid-template-columns:1fr}.header-right{text-align:left}.header-right .actions{justify-content:flex-start}.pg-big{font-size:52px}.image-wrapper{height:240px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="top"><div>
+<div class="eyebrow">Research Project <span>— IoT & Tourism</span></div>
+<h1>Effect of Visitor Count, Resource Utilization & Environment on <em>Tourist Satisfaction</em></h1>
+<p class="header-desc">Multiple Linear Regression analysis using IoT tourism data. Final model explains 62.3% of satisfaction variance (R-squared = 0.623). Resource over-utilization is the strongest negative driver.</p>
+<p style="font-size:13px;color:var(--muted2);margin-top:12px;">Nico Alfianto, Muhammad Ikhsan Basuki, Marcho Dominggus Deviano Timisela, Awaludin Al Ayubi, Nethar Balawan Mualikul Mulki — Information Systems</p>
+</div><div class="header-right"><strong>Nico Alfianto</strong><p>Depok, Indonesia</p><p style="font-size:13px;">alfiantonico9@gmail.com</p>
+<div class="actions"><a class="btn-white" href="https://nico-myproject.github.io">Back to Portfolio</a><a class="btn-outline" href="https://www.kaggle.com/datasets/ziya07/tourism-resource-management-dataset" target="_blank">View Dataset</a></div></div></div></div></header>
+<main class="wrap">
+<div class="kpi-grid" style="margin-bottom:20px;">
+<div class="kpi"><span>R-Squared</span><b>0.623</b><small>62.3% variance explained</small></div>
+<div class="kpi"><span>Normality Test</span><b>0.054</b><small>Shapiro-Wilk p-value — Passed</small></div>
+<div class="kpi"><span>Homoscedasticity</span><b>0.266</b><small>Breusch-Pagan p-value — Passed</small></div>
+<div class="kpi"><span>Autocorrelation</span><b>2.097</b><small>Durbin-Watson — No autocorrelation</small></div>
+</div>
+<div class="card"><h3>Abstract</h3><p style="font-size:14px;color:var(--muted);line-height:1.8;">The development of Internet of Things (IoT) technology has brought significant changes in data management in the tourism sector. This study aims to analyze the effect of visitor count, resource utilization rate, and environmental factors on tourist satisfaction using multiple linear regression. The final model produced an R-squared value of 0.623.</p><p style="font-size:13px;color:var(--muted2);margin-top:12px;"><b style="color:var(--text);">Keywords:</b> IoT, Tourism, Linear Regression, Tourist Satisfaction, Data Analytics</p></div>
+<!-- PLAYGROUND -->
+<div class="card">
+<div class="eyebrow" style="margin-bottom:10px;">Interactive Playground <span>— Try The Model Yourself</span></div>
+<h2 style="font-size:28px;">Tourist Satisfaction Predictor</h2>
+<p class="sub" style="max-width:720px;">Start with a scenario, adjust the conditions, then see the predicted satisfaction. This is a simplified Multiple Linear Regression model based on the coefficients from this study. Every change updates the prediction instantly, in your browser.</p>
+<div class="pg-steps">
+<div class="pg-step"><span>STEP 01</span><b>Pick a scenario</b><p>Start from a real condition. Ideal Day, Overcrowded, or Hot and Noisy. No need to guess from zero.</p></div>
+<div class="pg-step"><span>STEP 02</span><b>Adjust the conditions</b><p>Change visitor count, resource usage, temperature, air quality, or noise. Watch how satisfaction moves.</p></div>
+<div class="pg-step"><span>STEP 03</span><b>Read the driver</b><p>Don't just trust the score. See which factor is pulling satisfaction down the most, and what to fix first.</p></div>
+</div>
+<div class="pg-preset" id="pgPreset">
+<button onclick="loadPresetIoT('ideal',this)" class="active">Ideal Day</button>
+<button onclick="loadPresetIoT('crowded',this)">Overcrowded Peak</button>
+<button onclick="loadPresetIoT('hot',this)">Hot and Noisy</button>
+<button onclick="loadPresetIoT('quiet',this)">Quiet Off-Peak</button>
+</div>
+<div class="pg-grid2">
+<div>
+<div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);font-weight:600;">Input — Conditions (X)</div>
+<div class="pg-label">Visitor Count (X1) <b id="pgV">120 visitors / hour</b></div>
+<input type="range" class="pg-input" id="inVisitor" min="10" max="500" value="120" oninput="goIoT()">
+<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted2);margin-top:6px;"><span>10 — Very quiet</span><span>500 — Very crowded</span></div>
+<div class="pg-label">Resource Usage Rate (X2) <b id="pgR">0.45</b></div>
+<input type="range" class="pg-input" id="inResource" min="10" max="100" value="45" oninput="goIoT()">
+<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted2);margin-top:6px;"><span>0.10 — Empty</span><span>1.00 — Fully used</span></div>
+<div class="pg-label">Temperature (X3) <b id="pgT">24°C</b></div>
+<input type="range" class="pg-input" id="inTemp" min="15" max="38" value="24" oninput="goIoT()">
+<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted2);margin-top:6px;"><span>15°C — Cool</span><span>38°C — Very hot</span></div>
+<div class="pg-label">Air Quality Index (X4) <b id="pgA">60 AQI</b></div>
+<input type="range" class="pg-input" id="inAQI" min="20" max="200" value="60" oninput="goIoT()">
+<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted2);margin-top:6px;"><span>20 — Clean</span><span>200 — Unhealthy</span></div>
+<div class="pg-label">Noise Level (X5) <b id="pgN">55 dB</b></div>
+<input type="range" class="pg-input" id="inNoise" min="30" max="90" value="55" oninput="goIoT()">
+<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted2);margin-top:6px;"><span>30 dB — Quiet</span><span>90 dB — Very noisy</span></div>
+</div>
+<div>
+<div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);font-weight:600;">Model Output (Y)</div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:10px;gap:12px;">
+<div><div class="pg-big" id="pgScore">7.8<span style="font-size:24px;color:var(--muted2);"> / 10</span></div><div style="font-size:13px;color:var(--muted);margin-top:6px;">Y = 9.42 - 0.004*X1 - 3.10*X2 - 0.06*X3 - 0.008*X4 - 0.02*X5</div></div>
+<span class="pg-badge green" id="pgBadge">Satisfied</span>
+</div>
+<div class="pg-bar"><div id="pgFill"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted2);"><span>0 — Very Dissatisfied</span><span style="color:#fff;font-weight:600;">5.0 Neutral</span><span>10 — Very Satisfied</span></div>
+<div class="pg-contrib"><div style="font-size:13px;font-weight:700;margin-bottom:12px;">Why This Score? — Variable Contribution</div><div id="pgContrib" style="display:flex;flex-direction:column;gap:10px;"></div><div style="font-size:12px;color:var(--muted2);margin-top:12px;line-height:1.6;">Negative (red) pulls satisfaction down. The largest negative bar is the priority to fix. Resource Usage is the strongest negative driver.</div></div>
+<div class="pg-action"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Recommended Action</div><div id="pgAction" style="font-size:14px;line-height:1.7;color:var(--muted);margin-top:6px;">Conditions are good. Maintain resource usage below 0.60 and keep visitor flow smooth to sustain high satisfaction.</div></div>
+</div>
+</div>
+<div class="pg-meta"><div><b>Model:</b> Multiple Linear Regression (simplified coefficients for demo)</div><div><b>Dataset:</b> Kaggle Tourism Resource Management, IoT-based</div><div><b>Validation:</b> R-squared 0.623, Residuals normal (p=0.054), No autocorrelation</div><div><b>Note:</b> Coefficients are simplified for interactive demonstration. See paper for full estimation.</div></div>
+</div>
+
+<!-- VISUALS -->
+<div class="grid2">
+<div class="card"><h3>Figure 1 — Resource Usage vs Satisfaction</h3><p class="sub">Negative correlation. Click to zoom.</p><div class="image-wrapper" onclick="openModal('scatter_resource_satisfaction.png')"><img src="scatter_resource_satisfaction.png" alt="Scatter Resource vs Satisfaction" loading="lazy"></div><div class="insight"><b>Key Insight:</b> As resource usage approaches 1.0, satisfaction drops sharply. Over-utilization hurts experience.</div></div>
+<div class="card"><h3>Figure 2 — Visitor Count Distribution</h3><p class="sub">Outliers affected the initial model. Click to zoom.</p><div class="image-wrapper" onclick="openModal('boxplot_visitor_count.png')"><img src="boxplot_visitor_count.png" alt="Boxplot Visitor Count" loading="lazy"></div><div class="insight"><b>What this proves:</b> Outlier handling was needed before final regression. Boxplot shows extreme visitor peaks.</div></div>
+<div class="card"><h3>Figure 3 — QQ-Plot of Residuals</h3><p class="sub">Normality check. Click to zoom.</p><div class="image-wrapper" onclick="openModal('qqplot_residual.png')"><img src="qqplot_residual.png" alt="QQ Plot Residual" loading="lazy"></div><div class="insight"><b>Validation:</b> Points close to the line indicate normal distribution. Shapiro-Wilk p = 0.054 — Assumption met.</div></div>
+<div class="card"><h3>Figure 4 — Histogram of Residuals</h3><p class="sub">Symmetric distribution. Click to zoom.</p><div class="image-wrapper" onclick="openModal('histogram_residual.png')"><img src="histogram_residual.png" alt="Histogram Residual" loading="lazy"></div><div class="insight"><b>Validation:</b> Symmetric histogram supports normality. Breusch-Pagan p = 0.266 — Homoscedasticity met.</div></div>
+</div>
+
+<!-- DATASET -->
+<div class="card"><h3>Dataset Structure</h3>
+<table class="table"><tr><th>Variable</th><th>Type</th><th>Description</th></tr>
+<tr><td>visitor_satisfaction</td><td>Float — Y</td><td>Tourist satisfaction score (0-10)</td></tr>
+<tr><td>visitor_count</td><td>Int — X1</td><td>Number of visitors per hour</td></tr>
+<tr><td>resource_usage_rate</td><td>Float — X2</td><td>Facility utilization rate (0-1)</td></tr>
+<tr><td>temperature</td><td>Float — X3</td><td>Environmental temperature (°C)</td></tr>
+<tr><td>air_quality_index</td><td>Int — X4</td><td>Air Quality Index</td></tr>
+<tr><td>noise_level</td><td>Float — X5</td><td>Noise level (dB)</td></tr></table>
+<div style="margin-top:16px;"><a class="btn-outline" href="https://www.kaggle.com/datasets/ziya07/tourism-resource-management-dataset" target="_blank">Download Dataset from Kaggle</a></div>
+</div>
+
+</main>
+<footer><div class="wrap"><span>© 2026 Nico Alfianto — IoT Tourism Satisfaction Analysis. Data Source: Kaggle Tourism Resource Management</span><span><a href="https://nico-myproject.github.io">Portfolio</a></span></div></footer>
+<div class="modal" id="imageModal" onclick="closeModal()"><span class="modal-close">&times;</span><img id="modalImg" src="" alt="Full View"></div>
+<script>
+function goIoT(){
+var v=+document.getElementById('inVisitor').value;
+var r=+document.getElementById('inResource').value/100;
+var t=+document.getElementById('inTemp').value;
+var a=+document.getElementById('inAQI').value;
+var n=+document.getElementById('inNoise').value;
+document.getElementById('pgV').textContent=v+' visitors / hour';
+document.getElementById('pgR').textContent=r.toFixed(2);
+document.getElementById('pgT').textContent=t+'°C';
+document.getElementById('pgA').textContent=a+' AQI';
+document.getElementById('pgN').textContent=n+' dB';
+var intercept=9.42;
+var cV=-0.004*v, cR=-3.10*r, cT=-0.06*(t-20), cA=-0.008*(a-40), cN=-0.02*(n-40);
+var y=Math.max(0,Math.min(10, intercept+cV+cR+cT+cA+cN));
+document.getElementById('pgScore').innerHTML=y.toFixed(1)+'<span style="font-size:24px;color:var(--muted2);"> / 10</span>';
+var fill=document.getElementById('pgFill'), badge=document.getElementById('pgBadge');
+fill.style.width=(y*10)+'%';
+if(y>=7){fill.style.background='#22C55E';badge.textContent='Satisfied';badge.className='pg-badge green';}
+else if(y>=5){fill.style.background='#FACC15';badge.textContent='Neutral — Needs Improvement';badge.className='pg-badge yellow';}
+else{fill.style.background='#EF4444';badge.textContent='Dissatisfied — Act Now';badge.className='pg-badge red';}
+var parts=[{label:'Resource Usage '+r.toFixed(2),val:cR},{label:'Visitor Count '+v+'/hr',val:cV},{label:'Temperature '+t+'°C',val:cT},{label:'Noise Level '+n+' dB',val:cN},{label:'Air Quality '+a+' AQI',val:cA},{label:'Base (Intercept)',val:intercept}];
+parts.sort(function(a,b){return Math.abs(b.val)-Math.abs(a.val);});
+document.getElementById('pgContrib').innerHTML=parts.map(function(x){
+var w=Math.min(100,Math.abs(x.val)/3.5*100), col=x.val>=0?'#22C55E':'#EF4444', sign=x.val>=0?'+':'';
+if(x.label.indexOf('Base')>=0) col='#71717A';
+return '<div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;"><span>'+x.label+'</span><b style="color:'+col+';">'+sign+x.val.toFixed(2)+'</b></div><div style="height:6px;background:#27272A;border-radius:999px;overflow:hidden;"><div style="height:100%;width:'+w+'%;background:'+col+';border-radius:999px;"></div></div></div>';
+}).join('');
+var act='';
+if(r>=0.85) act='Resource usage is critical ('+r.toFixed(2)+'). Limit entry or open additional facilities immediately. This is the number one driver of dissatisfaction.';
+else if(r>=0.70) act='Resource usage is high. Add staff, open overflow area, or stagger visitor entry to bring usage below 0.60.';
+else if(v>=350) act='Crowding is the main issue. Implement timed entry or visitor cap to keep count below 300 per hour.';
+else if(n>=75) act='Noise is pulling satisfaction down. Enforce quiet zones or limit noisy activities during peak hours.';
+else if(a>=150) act='Air quality is unhealthy. Increase ventilation or limit outdoor activities until AQI improves.';
+else if(t>=32) act='Heat is affecting comfort. Provide shade, water stations, and indoor cooling areas.';
+else if(y>=7) act='Conditions are good. Maintain resource usage below 0.60 and keep visitor flow smooth to sustain high satisfaction.';
+else act='Multiple factors are slightly negative. Focus on the largest red bar above first — that gives the biggest satisfaction gain.';
+document.getElementById('pgAction').textContent=act;
+}
+function loadPresetIoT(kind,btn){
+var btns=document.querySelectorAll('#pgPreset button');for(var i=0;i<btns.length;i++)btns[i].classList.remove('active');if(btn)btn.classList.add('active');
+var v=120,r=45,t=24,a=60,n=55;
+if(kind==='crowded'){v=420;r=92;t=29;a=95;n=78;}
+if(kind==='hot'){v=200;r=65;t=35;a=140;n=80;}
+if(kind==='quiet'){v=30;r=25;t=22;a=35;n=38;}
+document.getElementById('inVisitor').value=v;document.getElementById('inResource').value=r;document.getElementById('inTemp').value=t;document.getElementById('inAQI').value=a;document.getElementById('inNoise').value=n;
+goIoT();
+}
+goIoT();
+function openModal(src){document.getElementById('modalImg').src=src;document.getElementById('imageModal').classList.add('active');}
+function closeModal(){document.getElementById('imageModal').classList.remove('active');}
+</script>
+</body>
+</html>
