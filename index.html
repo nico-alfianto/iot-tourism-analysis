@@ -65,13 +65,20 @@ main{padding:32px 0 80px}
 .pg-contrib,.pg-action{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-top:12px}
 .pg-meta{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;font-size:12px;color:var(--muted2);line-height:1.7}
 .pg-meta b{color:var(--text)}
+.team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:16px}
+.team-card{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center}
+.team-avatar{width:56px;height:56px;border-radius:50%;background:#fff;color:#000;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.team-card b{display:block;font-size:14px;line-height:1.4}
+.team-card span{font-size:12px;color:var(--muted)}
+.team-card p{font-size:12px;color:var(--muted2);margin-top:6px;line-height:1.5}
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);justify-content:center;align-items:center;z-index:9999}
 .modal.active{display:flex}
 .modal img{max-width:92%;max-height:88%;border-radius:12px}
 .modal-close{position:absolute;top:20px;right:30px;font-size:40px;color:#fff;cursor:pointer}
 footer{border-top:1px solid var(--border);padding:28px 0 40px;color:var(--muted2);font-size:13px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media(max-width:900px){h1{font-size:28px}.kpi-grid{grid-template-columns:1fr 1fr}.grid2,.pg-grid2,.pg-steps{grid-template-columns:1fr}.header-right{text-align:left}.header-right .actions{justify-content:flex-start}.pg-big{font-size:52px}.image-wrapper{height:240px}}
+@media(max-width:900px){h1{font-size:28px}.kpi-grid{grid-template-columns:1fr 1fr}.grid2,.pg-grid2,.pg-steps{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr 1fr}.header-right{text-align:left}.header-right .actions{justify-content:flex-start}.pg-big{font-size:52px}.image-wrapper{height:240px}}
+@media(max-width:560px){.team-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -80,7 +87,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <h1>Effect of Visitor Count, Resource Utilization & Environment on <em>Tourist Satisfaction</em></h1>
 <p class="header-desc">Multiple Linear Regression analysis using IoT tourism data. Final model explains 62.3% of satisfaction variance (R-squared = 0.623). Resource over-utilization is the strongest negative driver.</p>
 <p style="font-size:13px;color:var(--muted2);margin-top:12px;">Nico Alfianto, Muhammad Ikhsan Basuki, Marcho Dominggus Deviano Timisela, Awaludin Al Ayubi, Nethar Balawan Mualikul Mulki — Information Systems</p>
-</div><div class="header-right"><strong>Nico Alfianto</strong><p>Depok, Indonesia</p><p style="font-size:13px;">alfiantonico9@gmail.com</p>
+</div><div class="header-right"><strong>Nico Alfianto</strong><p>Bogor, Indonesia</p><p style="font-size:13px;">alfiantonico9@gmail.com</p>
 <div class="actions"><a class="btn-white" href="https://nico-myproject.github.io">Back to Portfolio</a><a class="btn-outline" href="https://www.kaggle.com/datasets/ziya07/tourism-resource-management-dataset" target="_blank">View Dataset</a></div></div></div></div></header>
 <main class="wrap">
 <div class="kpi-grid" style="margin-bottom:20px;">
@@ -90,7 +97,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="kpi"><span>Autocorrelation</span><b>2.097</b><small>Durbin-Watson — No autocorrelation</small></div>
 </div>
 <div class="card"><h3>Abstract</h3><p style="font-size:14px;color:var(--muted);line-height:1.8;">The development of Internet of Things (IoT) technology has brought significant changes in data management in the tourism sector. This study aims to analyze the effect of visitor count, resource utilization rate, and environmental factors on tourist satisfaction using multiple linear regression. The final model produced an R-squared value of 0.623.</p><p style="font-size:13px;color:var(--muted2);margin-top:12px;"><b style="color:var(--text);">Keywords:</b> IoT, Tourism, Linear Regression, Tourist Satisfaction, Data Analytics</p></div>
-<!-- PLAYGROUND -->
 <div class="card">
 <div class="eyebrow" style="margin-bottom:10px;">Interactive Playground <span>— Try The Model Yourself</span></div>
 <h2 style="font-size:28px;">Tourist Satisfaction Predictor</h2>
@@ -139,16 +145,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </div>
 <div class="pg-meta"><div><b>Model:</b> Multiple Linear Regression (simplified coefficients for demo)</div><div><b>Dataset:</b> Kaggle Tourism Resource Management, IoT-based</div><div><b>Validation:</b> R-squared 0.623, Residuals normal (p=0.054), No autocorrelation</div><div><b>Note:</b> Coefficients are simplified for interactive demonstration. See paper for full estimation.</div></div>
 </div>
-
-<!-- VISUALS -->
 <div class="grid2">
 <div class="card"><h3>Figure 1 — Resource Usage vs Satisfaction</h3><p class="sub">Negative correlation. Click to zoom.</p><div class="image-wrapper" onclick="openModal('scatter_resource_satisfaction.png')"><img src="scatter_resource_satisfaction.png" alt="Scatter Resource vs Satisfaction" loading="lazy"></div><div class="insight"><b>Key Insight:</b> As resource usage approaches 1.0, satisfaction drops sharply. Over-utilization hurts experience.</div></div>
 <div class="card"><h3>Figure 2 — Visitor Count Distribution</h3><p class="sub">Outliers affected the initial model. Click to zoom.</p><div class="image-wrapper" onclick="openModal('boxplot_visitor_count.png')"><img src="boxplot_visitor_count.png" alt="Boxplot Visitor Count" loading="lazy"></div><div class="insight"><b>What this proves:</b> Outlier handling was needed before final regression. Boxplot shows extreme visitor peaks.</div></div>
 <div class="card"><h3>Figure 3 — QQ-Plot of Residuals</h3><p class="sub">Normality check. Click to zoom.</p><div class="image-wrapper" onclick="openModal('qqplot_residual.png')"><img src="qqplot_residual.png" alt="QQ Plot Residual" loading="lazy"></div><div class="insight"><b>Validation:</b> Points close to the line indicate normal distribution. Shapiro-Wilk p = 0.054 — Assumption met.</div></div>
 <div class="card"><h3>Figure 4 — Histogram of Residuals</h3><p class="sub">Symmetric distribution. Click to zoom.</p><div class="image-wrapper" onclick="openModal('histogram_residual.png')"><img src="histogram_residual.png" alt="Histogram Residual" loading="lazy"></div><div class="insight"><b>Validation:</b> Symmetric histogram supports normality. Breusch-Pagan p = 0.266 — Homoscedasticity met.</div></div>
 </div>
-
-<!-- DATASET -->
 <div class="card"><h3>Dataset Structure</h3>
 <table class="table"><tr><th>Variable</th><th>Type</th><th>Description</th></tr>
 <tr><td>visitor_satisfaction</td><td>Float — Y</td><td>Tourist satisfaction score (0-10)</td></tr>
@@ -159,9 +161,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <tr><td>noise_level</td><td>Float — X5</td><td>Noise level (dB)</td></tr></table>
 <div style="margin-top:16px;"><a class="btn-outline" href="https://www.kaggle.com/datasets/ziya07/tourism-resource-management-dataset" target="_blank">Download Dataset from Kaggle</a></div>
 </div>
-
+<div class="card">
+<h3>Team Members</h3>
+<p class="sub">This is a group research project — Information Systems. Each member contributed to data analysis, modelling, and reporting.</p>
+<div class="team-grid">
+<div class="team-card"><div class="team-avatar">NA</div><b>Nico Alfianto</b><span>Bogor, Indonesia</span><p>Data Analysis & Dashboard<br>alfiantonico9@gmail.com</p></div>
+<div class="team-card"><div class="team-avatar">MB</div><b>Muhammad Ikhsan Basuki</b><span>Information Systems</span><p>Research & Data Analysis</p></div>
+<div class="team-card"><div class="team-avatar">MT</div><b>Marcho Dominggus Deviano Timisela</b><span>Information Systems</span><p>Research & Modelling</p></div>
+<div class="team-card"><div class="team-avatar">AA</div><b>Awaludin Al Ayubi</b><span>Information Systems</span><p>Research & Reporting</p></div>
+<div class="team-card"><div class="team-avatar">NM</div><b>Nethar Balawan Mualikul Mulki</b><span>Information Systems</span><p>Research & Validation</p></div>
+</div>
+<p style="font-size:12px;color:var(--muted2);margin-top:14px;line-height:1.6;">Note: Role descriptions above are general team roles. Tell me if you want exact roles per person and I will update them.</p>
+</div>
 </main>
-<footer><div class="wrap"><span>© 2026 Nico Alfianto — IoT Tourism Satisfaction Analysis. Data Source: Kaggle Tourism Resource Management</span><span><a href="https://nico-myproject.github.io">Portfolio</a></span></div></footer>
+<footer><div class="wrap"><span>© 2026 Nico Alfianto & Team — IoT Tourism Satisfaction Analysis. Data Source: Kaggle Tourism Resource Management</span><span><a href="https://nico-myproject.github.io">Portfolio</a></span></div></footer>
 <div class="modal" id="imageModal" onclick="closeModal()"><span class="modal-close">&times;</span><img id="modalImg" src="" alt="Full View"></div>
 <script>
 function goIoT(){
